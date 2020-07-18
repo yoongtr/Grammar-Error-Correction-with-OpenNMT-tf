@@ -30,16 +30,22 @@ GPU installation within conda env: `conda create --name tf_gpu tensorflow-gpu`
     * tgt-train.txt
     * tgt-val.txt
     * tgt-test.txt
+    
+* Move all above files to ~/training folder    
 
 
 ## 3) Build vocabulary
-`onmt-build-vocab --size 10000 --save_vocab src-vocab.txt src-train.txt`
-`onmt-build-vocab --size 10000 --save_vocab tgt-vocab.txt tgt-train.txt`
+* This creates the vocabulary for the model. Build vocabulary from data files by:
+   `onmt-build-vocab --size 10000 --save_vocab src-vocab.txt src-train.txt`
+   `onmt-build-vocab --size 10000 --save_vocab tgt-vocab.txt tgt-train.txt`
+* Alternatively, vocabulary can also be built from external sources, e.g. Wikidump. If data is highly specific on one subject, build from data files for higher accuracy
+* Change vocabulary --size to fit your data size
 
-## 4) Create config data.yml file (in data folder)
+## 4) Create config data.yml file (in ~/training)
 See [OpenNMT parameters documentation](https://opennmt.net/OpenNMT-tf/configuration.html) for parameters tuning
 
 ## 5) Train model
+` cd training`
 * Parameters
     * To specify which GPU to run: CUDA_VISIBLE_DEVICES=gpu_id_1,gpu_id_2
     * To choose number of GPUs to train (batches are processed in parralel): --num_gpus no_of_gpus
@@ -50,7 +56,8 @@ See [OpenNMT parameters documentation](https://opennmt.net/OpenNMT-tf/configurat
 * Run on CPU `onmt-main --model_type Transformer --config config.yml --auto_config train --with_eval`
 
 Track logs: `tensorboard --logdir="."`
-CUDA for specifying the GPU
+
+CUDA_VISIBLE_DEVICES for specifying the GPU tf will see
 
 ## 6) Translate
 `CUDA_VISIBLE_DEVICES=1,2 onmt-main --config config.yml --auto_config infer --features_file src-test.txt --predictions_file predictions.txt`
