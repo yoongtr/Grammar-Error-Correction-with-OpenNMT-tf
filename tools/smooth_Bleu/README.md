@@ -1,3 +1,5 @@
+from https://github.com/cshanbo/Smooth_BLEU
+
 # BLEU
 
 Out-of-the-box Python script for sentence level and corpus level BLEU calculation
