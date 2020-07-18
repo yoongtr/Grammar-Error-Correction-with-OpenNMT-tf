@@ -1,0 +1,22 @@
+# Change paths accordingly
+model_dir: /ldap_home/yoong.thuydung/2020-06-30/opennmt-tf/training/batch1/
+
+data:
+  train_features_file: src-train.txt
+  train_labels_file: tgt-train.txt
+  eval_features_file: src-val.txt
+  eval_labels_file: tgt-val.txt
+  source_vocabulary: src-vocab.txt
+  target_vocabulary: tgt-vocab.txt
+  
+train:
+  #batch_size: 32
+  save_checkpoints_steps: 1000
+  max_step: 10000
+  
+eval:
+  steps: 1000
+  #save_eval_predictions: true
+  external_evaluator: bleu
+  #export_on_best: bleu
+  #export_format: saved_model
