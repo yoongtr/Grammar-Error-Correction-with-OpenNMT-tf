@@ -1,5 +1,5 @@
 # Grammar-Error-Correction-with-OpenNMT-tf
-Grammar Error Correction with OpenNMT-tf using Machine Translation and Transformer model
+Grammar Error Correction with OpenNMT-tf using Neural Machine Translation and Transformer model
 
 # OpenNMT
 Model used: transformer
